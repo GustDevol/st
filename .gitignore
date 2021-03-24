@@ -3,3 +3,4 @@ patches/
 *.o
 *.orig
 *.rej
+st
