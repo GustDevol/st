@@ -6,8 +6,11 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 static char *fonts[] = {
+        "Liberation Mono:size=12:antialias=true:autohint=true",
+        "Ubuntu Mono:size=12:antialias=true:autohint=true",
         "Fira Code Medium:size=12:antialias=true:autohint=true",
         "Hack:size=12:antialias=true:autohint=true",
+        "JetBrains Mono:size=12:antialias=true:autohint=true",
 };
 
 static int fonts_current = 0;
@@ -85,11 +88,11 @@ static unsigned int cursorthickness = 2;
  *    Bold affects lines thickness if boxdraw_bold is not 0. Italic is ignored.
  * 0: disable (render all U25XX glyphs normally from the font).
  */
-const int boxdraw = 0;
-const int boxdraw_bold = 0;
+const int boxdraw = 1;
+const int boxdraw_bold = 1;
 
 /* braille (U28XX):  1: render as adjacent "pixels",  0: use font */
-const int boxdraw_braille = 0;
+const int boxdraw_braille = 1;
 
 /*
  * bell volume. It must be a value between -100 and 100. Use 0 for disabling
@@ -230,10 +233,10 @@ static Shortcut shortcuts[] = {
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
 	{ MODKEY,               XK_Return,      newterm,        {.i =  0} },
-	{ ControlMask,          XK_Page_Up,     kscrollup,      {.i = -1} },
-	{ ControlMask,          XK_Page_Down,   kscrolldown,    {.i = -1} },
-	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = 6} },
-	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = 6} },
+        { MODKEY|ShiftMask,     XK_F,           kscrollup,      {.i = -1} },
+	{ MODKEY|ShiftMask,     XK_B,           kscrolldown,    {.i = -1} },
+	{ MODKEY|ShiftMask,     XK_K,           kscrollup,      {.i = 6} },
+	{ MODKEY|ShiftMask,     XK_J,           kscrolldown,    {.i = 6} },
 	{ TERMMOD,              XK_S,           cyclefonts,     {}       },
 };
 
