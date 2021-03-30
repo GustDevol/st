@@ -7,7 +7,6 @@
  */
 static char *fonts[] = {
         "Liberation Mono:size=12:antialias=true:autohint=true",
-        "Ubuntu Mono:size=12:antialias=true:autohint=true",
         "Fira Code Medium:size=12:antialias=true:autohint=true",
         "Hack:size=12:antialias=true:autohint=true",
         "JetBrains Mono:size=12:antialias=true:autohint=true",
@@ -17,7 +16,10 @@ static int fonts_current = 0;
 
 /* Spare fonts */
 static char *font2[] = {
-	"Symbola:size=12:antialias=true:autohint=true",
+	/* "NotoEmoji Nerd Font Mono Book:pixelsize=12:antialias=true:autohint=true", */
+	"Symbola:pixelsize=6:antialias=true:autohint=true",
+	/* "Hack Regular Nerd Font Complete:size=12:antialias=true:autohint=true", */
+	"Hack Nerd Font Bold:size=13:antialias=true:autohint=true",
 };
 
 
@@ -233,10 +235,10 @@ static Shortcut shortcuts[] = {
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
 	{ MODKEY,               XK_Return,      newterm,        {.i =  0} },
-        { MODKEY|ShiftMask,     XK_F,           kscrollup,      {.i = -1} },
-	{ MODKEY|ShiftMask,     XK_B,           kscrolldown,    {.i = -1} },
-	{ MODKEY|ShiftMask,     XK_K,           kscrollup,      {.i = 6} },
-	{ MODKEY|ShiftMask,     XK_J,           kscrolldown,    {.i = 6} },
+        { TERMMOD,              XK_F,           kscrollup,      {.i = -1} },
+	{ TERMMOD,              XK_B,           kscrolldown,    {.i = -1} },
+	{ TERMMOD,              XK_K,           kscrollup,      {.i = 6} },
+	{ TERMMOD,              XK_J,           kscrolldown,    {.i = 6} },
 	{ TERMMOD,              XK_S,           cyclefonts,     {}       },
 };
 
