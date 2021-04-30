@@ -6,20 +6,18 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 static char *fonts[] = {
-        "Liberation Mono:size=12:antialias=true:autohint=true",
+        "Liberation Mono:size=13:antialias=true:autohint=true",
         "Fira Code Medium:size=12:antialias=true:autohint=true",
-        "Hack:size=12:antialias=true:autohint=true",
-        "JetBrains Mono:size=12:antialias=true:autohint=true",
+        "Hack:size=13:antialias=true:autohint=true",
+        "JetBrains Mono:size=13:antialias=true:autohint=true",
 };
 
 static int fonts_current = 0;
 
 /* Spare fonts */
 static char *font2[] = {
-	/* "NotoEmoji Nerd Font Mono Book:pixelsize=12:antialias=true:autohint=true", */
-	"Symbola:pixelsize=6:antialias=true:autohint=true",
-	/* "Hack Regular Nerd Font Complete:size=12:antialias=true:autohint=true", */
-	"Hack Nerd Font Bold:size=13:antialias=true:autohint=true",
+	"NotoEmoji Nerd Font Mono:pixelsize=14:antialias=true:autohint=true",
+	"Hack Regular Nerd Font Complete:size=13:antialias=true:autohint=true",
 };
 
 
@@ -123,29 +121,50 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.9;
+float alpha = 0.95;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 	/* 8 normal colors */
-	"black",
-	"red3",
-	"green3",
-	"yellow3",
-	"blue2",
-	"magenta3",
-	"cyan3",
-	"gray90",
+//	"black",
+//	"red3",
+//	"green3",
+//	"yellow3",
+//	"blue2",
+//	"magenta3",
+//	"cyan3",
+//	"gray90",
+//
+//	/* 8 bright colors */
+//	"gray50",
+//	"red",
+//	"green",
+//	"yellow",
+//	"#5c5cff",
+//	"magenta",
+//	"cyan",
+//	"white",
 
-	/* 8 bright colors */
-	"gray50",
-	"red",
-	"green",
-	"yellow",
-	"#5c5cff",
-	"magenta",
-	"cyan",
-	"white",
+  /* 8 normal colors */
+          [0] = "#fbf1c7", /* hard contrast: #f9f5d7 / soft contrast: #f2e5bc */
+          [1] = "#cc241d", /* red     */
+          [2] = "#98971a", /* green   */
+          [3] = "#d79921", /* yellow  */
+          [4] = "#4585bb", /* blue    */
+          [5] = "#b16286", /* magenta */
+          [6] = "#689d6a", /* cyan    */
+          [7] = "#7c6f64", /* white   */
+
+          /* 8 bright colors */
+          [8]  = "#928374", /* black   */
+          [9]  = "#9d0006", /* red     */
+          [10] = "#79740e", /* green   */
+          [11] = "#b57614", /* yellow  */
+          [12] = "#076678", /* blue    */
+          [13] = "#8f3f71", /* magenta */
+          [14] = "#427b58", /* cyan    */
+          [15] = "#3c3836", /* white   */
+
 
 	[255] = 0,
 
@@ -160,7 +179,8 @@ static const char *colorname[] = {
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 7;
+/* unsigned int defaultfg = 7; */
+unsigned int defaultfg = 0;
 unsigned int defaultbg = 258;
 static unsigned int defaultcs = 256;
 static unsigned int defaultrcs = 257;
