@@ -15,8 +15,8 @@ extern char *argv0;
 					argc--, argv++) {\
 				char argc_;\
 				char **argv_;\
-				int brk_;\
-				if (argv[0][1] == '-' && argv[0][2] == '\0') {\
+				int brk_;\ 
+					if (argv[0][1] == '-' && argv[0][2] == '\0') {\
 					argv++;\
 					argc--;\
 					break;\
