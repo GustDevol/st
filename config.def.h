@@ -6,10 +6,10 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 static char *fonts[] = {
-        "Liberation Mono:size=13:antialias=true:autohint=true",
-        "Fira Code Medium:size=12:antialias=true:autohint=true",
-        "Hack:size=13:antialias=true:autohint=true",
-        "JetBrains Mono:size=13:antialias=true:autohint=true",
+        "Liberation Mono:size=12:antialias=true:autohint=true",
+        "Fira Code Medium:size=11:antialias=true:autohint=true",
+        "Hack:size=12:antialias=true:autohint=true",
+        "JetBrains Mono:size=12:antialias=true:autohint=true",
 };
 
 static int fonts_current = 0;
@@ -17,8 +17,9 @@ static int fonts_current = 0;
 /* Spare fonts */
 static char *font2[] = {
         "Noto Color Emoji:pixelsize=10:antialias=true:autohint=true",
-	/* "NotoEmoji Nerd Font Mono:pixelsize=14:antialias=true:autohint=true", */
-	/* "Hack Regular Nerd Font Complete:size=13:antialias=true:autohint=true", */
+        /* "Symbola:pixelsize=10:antialias=true:autohint=true", */
+        /* "NotoEmoji Nerd Font Mono:pixelsize=14:antialias=true:autohint=true", */
+        /* "Hack Regular Nerd Font Complete:size=13:antialias=true:autohint=true", */
 };
 
 
