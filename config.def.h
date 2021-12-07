@@ -6,10 +6,10 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 static char *fonts[] = {
-        "Liberation Mono:size=12:antialias=true:autohint=true",
-        "Fira Code Medium:size=11:antialias=true:autohint=true",
-        "Hack:size=12:antialias=true:autohint=true",
-        "JetBrains Mono:size=12:antialias=true:autohint=true",
+        "Liberation Mono:size=11:antialias=true:autohint=true",
+        "Fira Code Medium:size=10:antialias=true:autohint=true",
+        "Hack:size=11:antialias=true:autohint=true",
+        "JetBrains Mono:size=11:antialias=true:autohint=true",
 };
 
 static int fonts_current = 0;
@@ -127,45 +127,25 @@ float alpha = 0.95;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	/* 8 normal colors */
-//	"black",
-//	"red3",
-//	"green3",
-//	"yellow3",
-//	"blue2",
-//	"magenta3",
-//	"cyan3",
-//	"gray90",
-//
-//	/* 8 bright colors */
-//	"gray50",
-//	"red",
-//	"green",
-//	"yellow",
-//	"#5c5cff",
-//	"magenta",
-//	"cyan",
-//	"white",
+    /* 8 normal colors */
+    [0] = "#0b0107", /* hard contrast: #f9f5d7 / soft contrast: #f2e5bc */
+    [1] = "#cc241d", /* red     */
+    [2] = "#98971a", /* green   */
+    [3] = "#d79921", /* yellow  */
+    [4] = "#4585bb", /* blue    */
+    [5] = "#b16286", /* magenta */
+    [6] = "#689d6a", /* cyan    */
+    [7] = "#7c6f64", /* white   */
 
-  /* 8 normal colors */
-          [0] = "#fbf1c7", /* hard contrast: #f9f5d7 / soft contrast: #f2e5bc */
-          [1] = "#cc241d", /* red     */
-          [2] = "#98971a", /* green   */
-          [3] = "#d79921", /* yellow  */
-          [4] = "#4585bb", /* blue    */
-          [5] = "#b16286", /* magenta */
-          [6] = "#689d6a", /* cyan    */
-          [7] = "#7c6f64", /* white   */
-
-          /* 8 bright colors */
-          [8]  = "#928374", /* black   */
-          [9]  = "#9d0006", /* red     */
-          [10] = "#79740e", /* green   */
-          [11] = "#b57614", /* yellow  */
-          [12] = "#076678", /* blue    */
-          [13] = "#8f3f71", /* magenta */
-          [14] = "#427b58", /* cyan    */
-          [15] = "#fbf1c7", /* white   */
+    /* 8 bright colors */
+    [8]  = "#928374", /* black   */
+    [9]  = "#9d0006", /* red     */
+    [10] = "#79740e", /* green   */
+    [11] = "#b57614", /* yellow  */
+    [12] = "#076678", /* blue    */
+    [13] = "#8f3f71", /* magenta */
+    [14] = "#427b58", /* cyan    */
+    [15] = "#fbf1c7", /* white   */
 
 
 	[255] = 0,
@@ -173,7 +153,8 @@ static const char *colorname[] = {
 	/* more colors can be added after 255 to use with DefaultXX */
 	"#cccccc",
 	"#555555",
-  "black",
+    "black",
+    "#1d1f21",
 };
 
 
@@ -182,7 +163,7 @@ static const char *colorname[] = {
  * foreground, background, cursor, reverse cursor
  */
 /* unsigned int defaultfg = 7; */
-unsigned int defaultfg = 0;
+unsigned int defaultfg = 15;
 unsigned int defaultbg = 258;
 static unsigned int defaultcs = 256;
 static unsigned int defaultrcs = 257;
@@ -238,6 +219,9 @@ static MouseShortcut mshortcuts[] = {
 	{ XK_ANY_MOD,           Button5, ttysend,        {.s = "\005"} },
 };
 
+/* External Pipe Commands */
+static char *editcmd[] = {"/bin/sh", "-c", "st-edit", "externalpipe", NULL};
+
 /* Internal keyboard shortcuts. */
 #define MODKEY Mod1Mask
 #define TERMMOD (ControlMask|ShiftMask)
@@ -258,12 +242,13 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
 	{ TERMMOD,              XK_X,           keyboard_select,{.i =  0} },
 	{ MODKEY,               XK_Return,      newterm,        {.i =  0} },
-  { TERMMOD,              XK_F,           kscrollup,      {.i = -1} },
+    { TERMMOD,              XK_F,           kscrollup,      {.i = -1} },
 	{ TERMMOD,              XK_B,           kscrolldown,    {.i = -1} },
 	{ TERMMOD,              XK_K,           kscrollup,      {.i = 6} },
 	{ TERMMOD,              XK_J,           kscrolldown,    {.i = 6} },
 	{ TERMMOD,              XK_S,           cyclefonts,     {}       },
 	{ MODKEY,               XK_l,           copyurl,        {.i =  0}},
+	{ MODKEY,               XK_e,           externalpipe,   {.v =  editcmd} },
 };
 
 /*
